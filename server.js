@@ -19,6 +19,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 var url = process.env.MONGODB_URI || 'mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge';
 
+if(process.env.NODE_ENV === 'production'){
+  url = process.env.MONGODB_URI
+}
+
 
 
 mongoose.connect(url)
