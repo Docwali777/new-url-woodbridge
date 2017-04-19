@@ -53,7 +53,7 @@ app.get('/', (req, res)=>{
 
 })
 
-app.post('/', (req, res)=>{
+app.post('/new', (req, res)=>{
 url = req.body.url
 let randomNumber = randomId()
 if(url !== ''){
@@ -68,21 +68,24 @@ if(url !== ''){
   console.log(req.headers.origin)
   res.render('index', {
     url,
-    id: `${req.headers.origin}/${randomNumber}`
+    id: `${req.headers.origin}/new/${randomNumber}`
   })
 } else {
     res.send('Please provide URL')
 }
 })
 
-app.get('/:data', (req, res)=>{
+app.get('/new/:data', (req, res, next)=>{
   let url = req.params.data
 
 URL.findOne({id: url}, (err, url)=>{
   if(err)
   {console.log(err)}
-  else
-  {res.redirect(url.url)}
+  else {
+    res.redirect(url.url)
+    next
+  }
+
 
 
 })
