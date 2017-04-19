@@ -17,8 +17,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // 'mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge'
 
-var url = process.env.MONGODB_URI;
-console.log(process.env.MONGODB_URI)
+var url = process.env.MONGODB_URI || 'mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge';
+
+
+
 mongoose.connect(url)
 
 mongoose.connection.on('connected', (err)=>{
