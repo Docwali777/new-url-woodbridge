@@ -8,23 +8,16 @@ const URL = require('./Schemas/urlSchema.js')
 let {Schema} = mongoose
 const app = express()
 
-
 var url = ' '
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 
-
-// 'mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge'
-
-var url = 'mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge';
-
 if(process.env.NODE_ENV === 'production'){
-  url = process.env.MONGODB_URI
-}
+  urlDatabase = process.env.MONGODB_URI
+} else {urlDatabase = 'mongodb://localhost/url'}
 
 
-
-mongoose.connect(url)
+mongoose.connect(urlDatabase)
 
 mongoose.connection.on('connected', (err)=>{
   if(err){console.log('not connected')}
