@@ -1,3 +1,4 @@
+const randomId = require('./functions/randomid.js')
 const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
@@ -7,7 +8,7 @@ const URL = require('./Schemas/urlSchema.js')
 let {Schema} = mongoose
 const app = express()
 
-const randomId = require('./functions/randomid.js')
+
 
 var url = ' '
 app.set('view engine', 'ejs')
@@ -16,13 +17,13 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // 'mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge'
 
-// let url = process.env.MONGODB_URI;
-
-mongoose.connect('mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge')
+var url = process.env.MONGODB_URI;
+console.log(process.env.MONGODB_URI)
+mongoose.connect(url)
 
 mongoose.connection.on('connected', (err)=>{
   if(err){console.log('not connected')}
-  console.log('connected')
+  console.log('connected to mongoLAB')
 })
 
 
