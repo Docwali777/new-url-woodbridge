@@ -1,4 +1,4 @@
-const randomId = require('./functions/randomid.js')
+// const randomId = require('./functions/randomid.js')
 const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
@@ -7,6 +7,18 @@ const mongoose = require('mongoose');
 const URL = require('./Schemas/urlSchema.js')
 let {Schema} = mongoose
 const app = express()
+
+let alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+
+const randomId =() =>{
+let num = ''
+for(let i =0; i < 5; i++){
+let random = Math.floor(Math.random() * alpha.length)
+num+= alpha[random]
+}
+return num
+}
 
 
 
@@ -17,7 +29,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // 'mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge'
 
-var url = process.env.MONGODB_URI || 'mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge';
+var url = 'mongodb://admin:admin2017@ds139989.mlab.com:39989/new-url-woodbridge';
 
 if(process.env.NODE_ENV === 'production'){
   url = process.env.MONGODB_URI
