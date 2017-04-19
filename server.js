@@ -10,7 +10,9 @@ const app = express()
 
 var url = ' '
 app.set('view engine', 'ejs')
+
 app.use(bodyParser.urlencoded({extended: true}))
+
 
 if(process.env.NODE_ENV === 'production'){
   urlDatabase = process.env.MONGODB_URI
