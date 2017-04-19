@@ -1,4 +1,4 @@
-// const randomId = require('./functions/randomid.js')
+const randomId = require('./functions/randomid.js')
 const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
@@ -8,17 +8,17 @@ const URL = require('./Schemas/urlSchema.js')
 let {Schema} = mongoose
 const app = express()
 
-let alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-
-
-const randomId =() =>{
-let num = ''
-for(let i =0; i < 5; i++){
-let random = Math.floor(Math.random() * alpha.length)
-num+= alpha[random]
-}
-return num
-}
+// let alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+//
+//
+// const randomId =() =>{
+// let num = ''
+// for(let i =0; i < 5; i++){
+// let random = Math.floor(Math.random() * alpha.length)
+// num+= alpha[random]
+// }
+// return num
+// }
 
 
 
