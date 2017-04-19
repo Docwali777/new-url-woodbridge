@@ -65,10 +65,10 @@ if(url !== ''){
     if(err) throw err
     console.log('newUrl created')
   })
-  console.log(req.headers.referer)
+  console.log(req.headers.origin)
   res.render('index', {
     url,
-    id: `${req.headers.referer}${randomNumber}`
+    id: `${req.headers.origin}/${randomNumber}`
   })
 } else {
     res.send('Please provide URL')
